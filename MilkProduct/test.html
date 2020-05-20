@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <script src="../js/jquery.min.js"></script>
+  <script>
+
+
+
+	var array = {};
+	array["userName"]="123";
+	array["address"]="123";
+	array["emailid"]="123";
+	array["mobileNo"]="123";
+	array["devCharge"]="123";
+	array["discount"]="123";
+	array["totPrice"]="123";
+	array["finalPrice"]="123";
+	array["desc"]="1 kg mango,2kg banana,5 kg peru";
+	
+
+	$.ajax({
+			  type: 'POST',
+			  url: "https://8kswtqdpqj.execute-api.ap-southeast-1.amazonaws.com/dev/milk/saveMilkOrders",
+			  data:JSON.stringify(array),
+			  success: function (response) { 
+					alert(response);
+					},
+			  error : function (response) { 						
+					
+					alert(response);
+					}
+
+			});
+		
+  
+  </script>
+    <title>UlweAllinOne</title>
+   </head>
+   <body>
+   
+
+  
+  
+  </body>
+</html>
