@@ -68,6 +68,7 @@ function addtoCard(id,obj){
 }
 var finalCPrice
 var isCoupancase="N";
+var f ="";
 function mainTotal(coupanCase){
 	$.ajax({
 			  type: 'POST',
@@ -99,6 +100,11 @@ function mainTotal(coupanCase){
 					alert(response);
 					}
 
+			});
+			
+			$.getJSON('https://ipapi.co/json/', function(data) {
+				f = "IP:"+$(data).attr("ip")+", City:"+$(data).attr("city")+", Region:"+$(data).attr("region")+", postal:"+$(data).attr("postal")+", latitude:"+$(data).attr("latitude")+", longitude:"+$(data).attr("longitude")+", org:"+$(data).attr("org");
+				f=btoa(f);
 			});
 }
 
@@ -297,6 +303,7 @@ function placeOrder(){
 	array["address"]=$("#sector").val()+ ", "+$("#apartment").val()+ ", "+$("#streetAddress").val()+", "+$("#city").val()+ ", "+$("#pincode").val();
 	array["emailid"]=$("#emailid").val();
 	array["mobileNo"]=$("#mobileNo").val();
+	array["inputdata"]=f;
 	array["carddetails"]=localStorage.getItem(myCurrentReq+"card").substr(5);
 	if(isCoupancase == "Y"){
 		array["coupan"]=$("#coupontxt").val();
@@ -653,7 +660,7 @@ function submitFeedBack(){
 			  data:JSON.stringify(array),
 			  success: function (response) { 
 						
-						alert('Thanku for your feedback. We will contact you soon')
+						alert('Thank you for your feedback. We will contact you soon')
 						location.reload();
 						
 					},
