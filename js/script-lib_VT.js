@@ -412,6 +412,7 @@ function displayProfilePopUp(response){
 	$("#vendorpassword").val($(response).attr('password'));
 	$("#envMode").val($(response).attr('envMode'));
 	$("#idval").val($(response).attr('id'));
+	$("#offerNote").val($(response).attr('offerNote'));
 	var coupan = "";
 	$.each($(response).attr('coupon'), function(key, value){
 		coupan = coupan + key + "#" + value+",";
@@ -433,6 +434,7 @@ function updateVendorDetails(){
 	map["envMode"]=$("#envMode").val();
 	map["coupon"]=$("#coupon").val();
 	map["id"]=$("#idval").val();
+	map["offerNote"]=$("#offerNote").val();
 		
 	$.ajax({
 			  type: 'POST',
@@ -627,6 +629,51 @@ $("#ordersection").hide();
 			});
 		
  }	
+ 
+function refreshMaster(){
+	$.ajax({
+		  type: 'POST',
+		  url: contextCommon + "refreshMaster",
+		  data : JSON.stringify(map),
+		  success: function (response) { 
+					alert(response);
+				},
+		  error : function (response) { 
+					alert("Error. Please contact support");
+				}
+
+		});
+}
+
+function getOfferAll(){
+	$.ajax({
+		  type: 'POST',
+		  url: contextCommon + "mainOfferSection",
+		  data : JSON.stringify(map),
+		  success: function (response) { 
+					$("#offerinfo").html(response);
+				},
+		  error : function (response) { 
+					
+				}
+
+		});
+}
+
+function getOfferProduct(){
+	$.ajax({
+		  type: 'POST',
+		  url: context + "productOfferSection",
+		  data : JSON.stringify(map),
+		  success: function (response) { 
+					$("#offerinfo").html(response);
+				},
+		  error : function (response) { 
+					
+				}
+
+		});
+}
  
 function submitFeedBack(){
 		
