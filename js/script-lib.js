@@ -651,10 +651,10 @@ function getOfferAll(){
 		  url: contextCommon + "mainOfferSection",
 		  data : JSON.stringify(map),
 		  success: function (response) { 
-					alert(response);
+					$("#offerinfo").html(response);
 				},
 		  error : function (response) { 
-					alert("Error. Please contact support");
+					
 				}
 
 		});
@@ -666,10 +666,10 @@ function getOfferProduct(){
 		  url: context + "productOfferSection",
 		  data : JSON.stringify(map),
 		  success: function (response) { 
-					alert(response);
+					$("#offerinfo").html(response);
 				},
 		  error : function (response) { 
-					alert("Error. Please contact support");
+					
 				}
 
 		});
