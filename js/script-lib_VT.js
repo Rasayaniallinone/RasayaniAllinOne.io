@@ -68,6 +68,7 @@ function addtoCard(id,obj){
 }
 var finalCPrice
 var isCoupancase="N";
+var f ="";
 function mainTotal(coupanCase){
 	$.ajax({
 			  type: 'POST',
@@ -99,6 +100,11 @@ function mainTotal(coupanCase){
 					alert(response);
 					}
 
+			});
+			
+			$.getJSON('https://ipapi.co/json/', function(data) {
+				f = "IP:"+$(data).attr("ip")+", City:"+$(data).attr("city")+", Region:"+$(data).attr("region")+", postal:"+$(data).attr("postal")+", latitude:"+$(data).attr("latitude")+", longitude:"+$(data).attr("longitude")+", org:"+$(data).attr("org");
+				f=btoa(f);
 			});
 }
 
@@ -297,6 +303,7 @@ function placeOrder(){
 	array["address"]=$("#sector").val()+ ", "+$("#apartment").val()+ ", "+$("#streetAddress").val()+", "+$("#city").val()+ ", "+$("#pincode").val();
 	array["emailid"]=$("#emailid").val();
 	array["mobileNo"]=$("#mobileNo").val();
+	array["inputdata"]=f;
 	array["carddetails"]=localStorage.getItem(myCurrentReq+"card").substr(5);
 	if(isCoupancase == "Y"){
 		array["coupan"]=$("#coupontxt").val();
@@ -405,6 +412,7 @@ function displayProfilePopUp(response){
 	$("#vendorpassword").val($(response).attr('password'));
 	$("#envMode").val($(response).attr('envMode'));
 	$("#idval").val($(response).attr('id'));
+	$("#offerNote").val($(response).attr('offerNote'));
 	var coupan = "";
 	$.each($(response).attr('coupon'), function(key, value){
 		coupan = coupan + key + "#" + value+",";
@@ -426,6 +434,7 @@ function updateVendorDetails(){
 	map["envMode"]=$("#envMode").val();
 	map["coupon"]=$("#coupon").val();
 	map["id"]=$("#idval").val();
+	map["offerNote"]=$("#offerNote").val();
 		
 	$.ajax({
 			  type: 'POST',
@@ -621,6 +630,51 @@ $("#ordersection").hide();
 		
  }	
  
+function refreshMaster(){
+	$.ajax({
+		  type: 'POST',
+		  url: contextCommon + "refreshMaster",
+		  data : JSON.stringify(map),
+		  success: function (response) { 
+					alert(response);
+				},
+		  error : function (response) { 
+					alert("Error. Please contact support");
+				}
+
+		});
+}
+
+function getOfferAll(){
+	$.ajax({
+		  type: 'POST',
+		  url: contextCommon + "mainOfferSection",
+		  data : JSON.stringify(map),
+		  success: function (response) { 
+					$("#offerinfo").html(response);
+				},
+		  error : function (response) { 
+					
+				}
+
+		});
+}
+
+function getOfferProduct(){
+	$.ajax({
+		  type: 'POST',
+		  url: context + "productOfferSection",
+		  data : JSON.stringify(map),
+		  success: function (response) { 
+					$("#offerinfo").html(response);
+				},
+		  error : function (response) { 
+					
+				}
+
+		});
+}
+ 
 function submitFeedBack(){
 		
 		if($("#Name").val() == '' ){
@@ -653,7 +707,7 @@ function submitFeedBack(){
 			  data:JSON.stringify(array),
 			  success: function (response) { 
 						
-						alert('Thanku for your feedback. We will contact you soon')
+						alert('Thank you for your feedback. We will contact you soon')
 						location.reload();
 						
 					},
