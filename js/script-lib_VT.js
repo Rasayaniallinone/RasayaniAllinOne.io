@@ -303,6 +303,7 @@ function placeOrder(){
 	array["address"]=$("#sector").val()+ ", "+$("#apartment").val()+ ", "+$("#streetAddress").val()+", "+$("#city").val()+ ", "+$("#pincode").val();
 	array["emailid"]=$("#emailid").val();
 	array["mobileNo"]=$("#mobileNo").val();
+	array["additionalNote"]=$("#additionalNote").val();
 	array["inputdata"]=f;
 	array["carddetails"]=localStorage.getItem(myCurrentReq+"card").substr(5);
 	if(isCoupancase == "Y"){
