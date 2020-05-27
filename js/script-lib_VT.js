@@ -652,7 +652,7 @@ function getOfferAll(){
 		  url: contextCommon + "mainOfferSection",
 		  data : JSON.stringify(map),
 		  success: function (response) { 
-					$("#offerinfo").html(response);
+					$(".offerMarqueNote").html("<p>"+response+'</p>');
 				},
 		  error : function (response) { 
 					
