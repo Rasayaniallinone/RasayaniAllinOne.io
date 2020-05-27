@@ -667,7 +667,7 @@ function getOfferProduct(){
 		  url: context + "productOfferSection",
 		  data : JSON.stringify(map),
 		  success: function (response) { 
-					$(".offerMarqueNote").html("<p>"+response+'</p>');
+					$(".offerMarqueNoteDetails").html("<p>"+response+'</p>');
 				},
 		  error : function (response) { 
 					

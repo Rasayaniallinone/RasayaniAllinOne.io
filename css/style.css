@@ -10032,3 +10032,25 @@ textarea.form-control {
     0%   { transform: translate(0, 0); }
     100% { transform: translate(-100%, 0); }
 }
+
+
+.offerMarqueNoteDetails {
+   line-height: 50px;
+   color: white;
+   white-space: nowrap;
+   overflow: hidden;
+   box-sizing: border-box;
+   font-size: 20px;
+   font-weight: 800;
+   color: Red;
+   font-family: sans-serif;
+}
+.offerMarqueNoteDetails p {
+    display: inline-block;
+    padding-left: 100%;
+    animation: offerMarqueNoteDetails 20s linear infinite;
+}
+@keyframes offerMarqueNoteDetails {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
