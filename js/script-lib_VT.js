@@ -536,21 +536,25 @@ function generateDetails(response1){
 		if(! ($(response).attr('orderStatus') == 'Delivered' || $(response).attr('orderStatus') == 'Cancelled')){
 		selectdd = '<select id="statusddval'+count+'"><option value="In-Progress">In-Progress</option><option value="Delivered">Delivered</option><option value="UnReachable">UnReachable</option><option value="Out of Stock">Out of Stock</option><option value="Cancelled">Cancelled</option></select>&nbsp;&nbsp;<input type="button" data-id="'+$(response).attr('id')+'"  data-emailid="'+$($(response).attr('user')).attr('emailid')+'" data-name="'+$($(response).attr('user')).attr('userName')+'" class="btn btn-primary" onclick="return updatestatus(this,'+count+')" value="update" />';
 		}
-			var details="<ol>";
-			$($($(response).attr('orderDetailsList'))).each(function(i,response){
-				details = details +"<li>"+$(response).attr('description')+"</li>";
-			});
+		var additionalInfo = "";
+		if($(response).attr('additionalNote') != null && $(response).attr('additionalNote') != "\"\""){
+			additionalInfo = ", <b>Additional Info:</b>"+$(response).attr('additionalNote');
+		}
+		var details="<ol>";
+		$($($(response).attr('orderDetailsList'))).each(function(i,response){
+			details = details +"<li>"+$(response).attr('description')+"</li>";
+		});
 		if(lastDate != $(response).attr('datetime').substr(0,10)){
 			str = str.replace("#runtime#",detailsmsg);
 			detailsmsg = "";
 			
-			detailsmsg = detailsmsg + '<p>'+count +'.<input type="hidden" value="'+details+'" id="datadesc'+count+'" /> <input type="button" data-id='+$(response).attr('id')+'  class="btn btn-primary"  onClick="return viewOrderDetails(this,'+count+')" value="OrderDetails" /> OrderId <b>'+$(response).attr('orderid')+'</b> placed by <b>'+$($(response).attr('user')).attr('userName')+'</b> using Mobile No. <b>'+$($(response).attr('user')).attr('mobileNo')+'</b> with Total amount <b>'+ $(response).attr('finalPrice')+' Rs. Address Details :</b> '+ $($(response).attr('user')).attr('address')+'. having order status <b>'+$(response).attr('orderStatus')+'</b>.'+selectdd;
+			detailsmsg = detailsmsg + '<p>'+count +'.<input type="hidden" value="'+details+'" id="datadesc'+count+'" /> <input type="button" data-id='+$(response).attr('id')+'  class="btn btn-primary"  onClick="return viewOrderDetails(this,'+count+')" value="OrderDetails" /> OrderId <b>'+$(response).attr('orderid')+'</b> placed by <b>'+$($(response).attr('user')).attr('userName')+'</b> using Mobile No. <b>'+$($(response).attr('user')).attr('mobileNo')+'</b> with Total amount <b>'+ $(response).attr('finalPrice')+' Rs. Address Details :</b> '+ $($(response).attr('user')).attr('address')+additionalInfo+'. having order status <b>'+$(response).attr('orderStatus')+'</b>.'+selectdd;
 			str = str +  '<div class="col-sm-12"><div class="cart-wrap ftco-animate fadeInUp ftco-animated"><div class="cart-total mb-3"><h3>'+$(response).attr('datetime').substr(0,10)+'</h3><div id="detailssub">#runtime#</div></div></div></div>';
 		
 			lastDate = $(response).attr('datetime').substr(0,10);
 			
 		}else{
-			detailsmsg = detailsmsg + '<p>'+count +'.<input type="hidden" value="'+details+'" id="datadesc'+count+'" /> <input type="button" data-id='+$(response).attr('id')+'  class="btn btn-primary"  onClick="return viewOrderDetails(this,'+count+')" value="OrderDetails" /> OrderId <b>'+$(response).attr('orderid')+'</b> placed by <b>'+$($(response).attr('user')).attr('userName')+'</b> using Mobile No. <b>'+$($(response).attr('user')).attr('mobileNo')+'</b> with Total amount <b>'+ $(response).attr('finalPrice')+' Rs. Address Details :</b> '+ $($(response).attr('user')).attr('address')+'. having order status <b>'+$(response).attr('orderStatus')+'</b>.'+selectdd;
+			detailsmsg = detailsmsg + '<p>'+count +'.<input type="hidden" value="'+details+'" id="datadesc'+count+'" /> <input type="button" data-id='+$(response).attr('id')+'  class="btn btn-primary"  onClick="return viewOrderDetails(this,'+count+')" value="OrderDetails" /> OrderId <b>'+$(response).attr('orderid')+'</b> placed by <b>'+$($(response).attr('user')).attr('userName')+'</b> using Mobile No. <b>'+$($(response).attr('user')).attr('mobileNo')+'</b> with Total amount <b>'+ $(response).attr('finalPrice')+' Rs. Address Details :</b> '+ $($(response).attr('user')).attr('address')+additionalInfo+'. having order status <b>'+$(response).attr('orderStatus')+'</b>.'+selectdd;
 				
 		}
 	
