@@ -28,10 +28,10 @@ function initMap(type){
 							
 						}
 						localStorage.setItem(myCurrentReq+"mymap",JSON.stringify(map))	;
-						setTimeout(hidePopup, 500);
+						setTimeout(hidePopup, 600);
 					},
 			  error : function (response) { 						
-					setTimeout(hidePopup, 500);
+					setTimeout(hidePopup, 600);
 					alert(response);
 					}
 
@@ -176,12 +176,12 @@ function generateProduct(){
 	var disc ="";
 	var descDesc ="<br> Category ";
 	if(desc.length == 1){
-		descDesc = ": <a href='javascript:void(0)' style='color: black;'>"+$(desc).eq(0).attr('productDesc')+"</a>"
+		descDesc = descDesc + ": <a href='javascript:void(0)' style='color: black;'>"+$(desc).eq(0).attr('productDesc')+"</a>"
 		minPrice = $(desc).eq(0).attr('minPrice');
 		maxPrice = $(desc).eq(0).attr('maxPrice');
 		disc = $(desc).eq(0).attr('discount');
 	}else{
-		descDesc = "<select id='catgID"+key+"' onchange='return calcPrice(this,"+key+")'>";
+		descDesc = descDesc + "<select id='catgID"+key+"' onchange='return calcPrice(this,"+key+")'>";
 		var q=0;
 		$(desc).each(function(){
 				if($(this).attr('stockStatus') != 'D'){
@@ -214,7 +214,7 @@ function generateProduct(){
 		$("#productDetails").append(ourProducts);
 		}
 	});
-	var cartContent = "<div class='row'><div class='col-md-12' align='center'><a href='"+$(".icon-shopping_cart").parent().attr('href')+"' class='nav-link'> <span class='btn btn-primary py-3 px-5' style='font-size: 25px;color:black;'>Proceed For Order<span class='cardCount' style='font-size: 25px;black;'></span></span></a></div></div>"
+	var cartContent = "<div class='row'><div class='col-md-12' align='center'><a href='"+$(".icon-shopping_cart").parent().attr('href')+"' class='nav-link'> <span class='btn btn-primary py-3 px-5' style='font-size: 25px;color:black;'>Proceed For Order &nbsp;&nbsp;<span class='icon-shopping_cart w3-large'></span><span class='cardCount' style='font-size: 25px;black;'></span></span></a></div></div>"
 	$("#productDetails").parent().append(cartContent);
 }
 
