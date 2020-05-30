@@ -147,7 +147,7 @@ function displayCardDetails(){
 			var finalPrice = $(obj).attr('minPrice') * k;
 			var clickFn = "return removeProduct('"+p+"',"+i+")";
 			var name = map[j].substr(0,map[j].indexOf(","));
-			var str = '<div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated" id="sectiondetails'+i+'"><div class="product"><a href="#" style="text-align: center" class="img-prod"><img class="img-fluid" src="images/product-'+j+'.jpg" alt="Colorlib Template"><div class="overlay"></div></a><div class="text py-3 pb-4 px-3 text-center"><h3><a href="#">'+name+'</a></h3><h5>'+$(obj).attr('productDesc')+'</h5><div class="pricing123"><p class="price"><span class="price-sale" style="'+style+'" >Price - '+$(obj).attr('minPrice')+' Rs</span><br><span style="'+style+'" class="price-sale">&nbsp;&nbsp;Quantity - '+k+'</span><br><span class="price-sale" style="'+style+'">&nbsp;&nbsp;Final Price - '+finalPrice+' Rs</span><br><span class="price-sale">&nbsp;&nbsp;<input type="button" value="Remove from cart" onclick="'+clickFn +'" class="btn btn-primary"  ></span><span class="total" style="display:none" data-val="'+j+','+k+'" id="totVal'+i+'">'+finalPrice+' Rs</span></p></div></div></div></div>';
+			var str = '<div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated" id="sectiondetails'+i+'"><div class="product"><a href="javascript:void(0)" style="text-align: center" class="img-prod"><img class="img-fluid" src="images/product-'+j+'.jpg" alt="Colorlib Template"><div class="overlay"></div></a><div class="text py-3 pb-4 px-3 text-center"><h3><a href="javascript:void(0)">'+name+'</a></h3><h5>'+$(obj).attr('productDesc')+'</h5><div class="pricing123"><p class="price"><span class="price-sale" style="'+style+'" >Price - '+$(obj).attr('minPrice')+' Rs</span><br><span style="'+style+'" class="price-sale">&nbsp;&nbsp;Quantity - '+k+'</span><br><span class="price-sale" style="'+style+'">&nbsp;&nbsp;Final Price - '+finalPrice+' Rs</span><br><span class="price-sale">&nbsp;&nbsp;<input type="button" value="Remove from cart" onclick="'+clickFn +'" class="btn btn-primary"  ></span><span class="total" style="display:none" data-val="'+j+','+k+'" id="totVal'+i+'">'+finalPrice+' Rs</span></p></div></div></div></div>';
 			$("#cardDetailsData").append(str);
 			}
 		}
@@ -174,24 +174,28 @@ function generateProduct(){
 	var minPrice ="";
 	var maxPrice ="";
 	var disc ="";
-	
-	var descDesc = "<br> Category <select id='catgID"+key+"' onchange='return calcPrice(this,"+key+")'>";
-	var q=0;
-	$(desc).each(function(){
-			//console.log($(this).attr('minPrice'))
-			if($(this).attr('stockStatus') != 'D'){
-				descDesc = descDesc + "<option data-id='"+$(this).attr('id')+"' data-max='"+$(this).attr('maxPrice')+"' data-dis='"+$(this).attr('discount')+"' data-min='"+$(this).attr('minPrice')+"' value='"+$(this).attr('productDesc')+"'>"+$(this).attr('productDesc')+"</option>";
-				if(q == 0){
-					minPrice = $(this).attr('minPrice');
-					maxPrice = $(this).attr('maxPrice');
-					disc = $(this).attr('discount');
+	var descDesc ="<br> Category ";
+	if(desc.length == 1){
+		descDesc = ": <a href='javascript:void(0)' style='color: black;'>"+$(desc).eq(0).attr('productDesc')+"</a>"
+		minPrice = $(desc).eq(0).attr('minPrice');
+		maxPrice = $(desc).eq(0).attr('maxPrice');
+		disc = $(desc).eq(0).attr('discount');
+	}else{
+		descDesc = "<select id='catgID"+key+"' onchange='return calcPrice(this,"+key+")'>";
+		var q=0;
+		$(desc).each(function(){
+				if($(this).attr('stockStatus') != 'D'){
+					descDesc = descDesc + "<option data-id='"+$(this).attr('id')+"' data-max='"+$(this).attr('maxPrice')+"' data-dis='"+$(this).attr('discount')+"' data-min='"+$(this).attr('minPrice')+"' value='"+$(this).attr('productDesc')+"'>"+$(this).attr('productDesc')+"</option>";
+					if(q == 0){
+						minPrice = $(this).attr('minPrice');
+						maxPrice = $(this).attr('maxPrice');
+						disc = $(this).attr('discount');
+					}
+					q++;
 				}
-				q++;
-			}
-	});
-	descDesc = descDesc + "</select>";
-	
-	
+		});
+		descDesc = descDesc + "</select>";
+	}
 	var valuesDetails = value.split(",");
 	if(displayComp != 'D'){
 		var firstDiscPrice="";
@@ -206,10 +210,12 @@ function generateProduct(){
 		}else{
 			outOfStock='<br><span class="btn btn-danger">Out of Stock</span>';
 		}
-		var ourProducts = '<div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated productNameClass" data-id="'+valuesDetails[0]+'" ><div class="product"><a href="#" class="img-prod" style="text-align: center"><img class="img-fluid" src="images/product-'+key+'.jpg" alt="UlweAllinOne" style="height: 200px;width: 200px;"><span id="discountSec'+key+'" class="'+discClass+'">'+firstDiscPrice+'</span><div class="overlay"></div></a><div class="text py-3 pb-4 px-3 text-center"><h3><a href="#">'+valuesDetails[0]+'</a></h3><div class=""><div class="pricing123"><p class="price"  ><span id="priceSection'+key+'">'+getAmountDesc(maxPrice,minPrice,disc,key)+'</span><span class="price-sale" >'+descDesc+'</span>'+outOfStock+'</p></div></div></div></div></div>';
+		var ourProducts = '<div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated productNameClass" data-id="'+valuesDetails[0]+'" ><div class="product"><a href="javascript:void(0)" class="img-prod" style="text-align: center"><img class="img-fluid" src="images/product-'+key+'.jpg" alt="UlweAllinOne" style="height: 200px;width: 200px;"><span id="discountSec'+key+'" class="'+discClass+'">'+firstDiscPrice+'</span><div class="overlay"></div></a><div class="text py-3 pb-4 px-3 text-center"><h3><a href="javascript:void(0)">'+valuesDetails[0]+'</a></h3><div class=""><div class="pricing123"><p class="price"  ><span id="priceSection'+key+'">'+getAmountDesc(maxPrice,minPrice,disc,key)+'</span><span class="price-sale" >'+descDesc+'</span>'+outOfStock+'</p></div></div></div></div></div>';
 		$("#productDetails").append(ourProducts);
 		}
 	});
+	var cartContent = "<div class='row'><div class='col-md-12' align='center'><a href='"+$(".icon-shopping_cart").parent().attr('href')+"' class='nav-link'> <span class='btn btn-primary py-3 px-5' style='font-size: 25px;color:black;'>Proceed For Order<span class='cardCount' style='font-size: 25px;black;'></span></span></a></div></div>"
+	$("#productDetails").parent().append(cartContent);
 }
 
 function getAmountDesc(maxPrice,minPrice,disc,key){
