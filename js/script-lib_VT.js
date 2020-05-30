@@ -175,12 +175,12 @@ function generateProduct(){
 		var maxPrice ="";
 		var disc ="";
 		var descDesc ="<br> Category ";
-		var hideSelect = "";
+		var hideSelect = '';
 		if(desc.length == 1){
-			hideSelect = hideSelect + "display:none;"
+			hideSelect = hideSelect + "style=display:none;"
 			descDesc = descDesc + ": <a href='javascript:void(0)' style='color: black;'>"+$(desc).eq(0).attr('productDesc')+"</a>";
 		}
-		descDesc = descDesc + "<select id='catgID"+key+"' style="+hideSelect+" onchange='return calcPrice(this,"+key+")'>";
+		descDesc = descDesc + "<select id='catgID"+key+"' onchange='return calcPrice(this,"+key+")' "+hideSelect+">";
 		var q=0;
 		$(desc).each(function(){
 				if($(this).attr('stockStatus') != 'D'){
