@@ -167,21 +167,20 @@ function generateProduct(){
 	
 	$.map(map, function(value,key){
 		
-	var name = value.split(",")[0];
-	var displayComp = value.split(",")[1];
-	var val1 = value.substr(value.indexOf(",")+1)
-	var desc = JSON.parse(val1.substr(val1.indexOf(",")+1));
-	var minPrice ="";
-	var maxPrice ="";
-	var disc ="";
-	var descDesc ="<br> Category ";
-	if(desc.length == 1){
-		descDesc = descDesc + ": <a href='javascript:void(0)' style='color: black;'>"+$(desc).eq(0).attr('productDesc')+"</a>"
-		minPrice = $(desc).eq(0).attr('minPrice');
-		maxPrice = $(desc).eq(0).attr('maxPrice');
-		disc = $(desc).eq(0).attr('discount');
-	}else{
-		descDesc = descDesc + "<select id='catgID"+key+"' onchange='return calcPrice(this,"+key+")'>";
+		var name = value.split(",")[0];
+		var displayComp = value.split(",")[1];
+		var val1 = value.substr(value.indexOf(",")+1)
+		var desc = JSON.parse(val1.substr(val1.indexOf(",")+1));
+		var minPrice ="";
+		var maxPrice ="";
+		var disc ="";
+		var descDesc ="<br> Category ";
+		var hideSelect = "";
+		if(desc.length == 1){
+			hideSelect = hideSelect + "display:none;"
+			descDesc = descDesc + ": <a href='javascript:void(0)' style='color: black;'>"+$(desc).eq(0).attr('productDesc')+"</a>";
+		}
+		descDesc = descDesc + "<select id='catgID"+key+"' style="+hideSelect+" onchange='return calcPrice(this,"+key+")'>";
 		var q=0;
 		$(desc).each(function(){
 				if($(this).attr('stockStatus') != 'D'){
@@ -195,7 +194,7 @@ function generateProduct(){
 				}
 		});
 		descDesc = descDesc + "</select>";
-	}
+	
 	var valuesDetails = value.split(",");
 	if(displayComp != 'D'){
 		var firstDiscPrice="";
