@@ -28,7 +28,7 @@
 					    <div class="col-md pr-4 d-flex topper align-items-center">
 					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
 						    <span class="text">info@rasayaniallinone.in</span>
-							<span class="text">&nbsp;<a href="https://drive.google.com/file/d/150BswuvZcNKl93R0__QoP1hdgjlXlI91/view?usp=sharing" style="color:white"><img style="height:25px" src="img/applogo.PNG" />&nbsp;App Download</a></span>
+							<span class="text playStoreIcon">&nbsp;<a href='https://play.google.com/store/apps/details?id=com.rasayaniallinone.myapplication&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='img/applogo.PNG' style="height:40px"/></a></span>
 					    </div>
 					    
 				    </div>
@@ -223,16 +223,18 @@
    <footer class="footer">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-5 col-sm-8">
+                    <div class="col-md-5">
                         <div class="footer-text one">
                             <h3>CONTACT US</h3>
                             <ul>
                                 <li><a href="#"><i class="material-icons">location_on</i>Durgamata Colony, Chambarli ,Rasayani</a></li>
                                 <li><a href="#"><i class="material-icons">email</i>info@rasayaniallinone.in</a></li>
                       			<li><a href="ContactForm.html"><i class="material-icons">chat</i>Feedback\Suggestions</a></li>
+								<li class="playStoreIcon" ><a href='https://play.google.com/store/apps/details?id=com.rasayaniallinone.myapplication&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='img/applogo.PNG' style="height:60px"/></a></li>
 				    		</ul>
                         </div>
                     </div>
+					
                 </div>
             </div>
             <div class="footer_bottom">
@@ -241,5 +243,13 @@
         </footer>
       
   <script src="js/bootstrap.min.js"></script>
+  <script>
+  if(window.location.search == '?appview'){
+	sessionStorage.setItem('appview','true');  
+  }  
+  if(sessionStorage.getItem('appview') == 'true'){
+		$(".playStoreIcon").hide();
+  }
+  </script>
   </body>
 </html>
