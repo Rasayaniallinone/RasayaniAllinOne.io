@@ -160,6 +160,11 @@
        }
        event.returnValue = true;
     }
+	var orderid = window.location.search;
+	if(orderid != ''){
+		$("#Orderid").val(orderid.substr(1));
+		submitViewOrder();
+	  } 
  </script>
    
   </body>
