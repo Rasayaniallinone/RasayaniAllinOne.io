@@ -3,8 +3,9 @@
   <head>
     <title>RasayaniAllinOne</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="img/logo.gif" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
@@ -81,39 +82,27 @@
 
 				<fieldset>
                     <label for="Name">Related To</label>
-		                  <select name="" id="Product" class="form-control">
-		                   <option value="Grossary">Grossarys</option> 
-		                  	<option value="VegetableFruit">Vegetable & Fruit</option> 
-		                    <option value="MilkProduct">Milk Product</option>
-							<option value="CakeWorld">Cake World</option> 
-		                    <option value="CafeCream">Cafe Cream</option>
-							<option value="HotelGreenPark">Hotel Green Park</option> 
-		                    <option value="Yoga">Yoga Classes</option>
-							<option value="HotelGreenPark">Hotel Green Park</option> 
-		                    <option value="ModakPuranPoli">Modak- Puran Ploi</option>
-		                    <option value="cloth">Online Cloths</option>  
-							<option value="other">Others- Any Suggestion</option>  
-		                  </select>
+		                  <select name="" id="Product" class="form-control"></select>
                 </fieldset>
                 
                 <fieldset>
-                    <label for="Name">Your Name \ Order Id</label>
-                    <input id="Name" placeholder="Your Order Id \ Name" maxlength=50 class="form-control" type="text" cols="50" tabindex="1" style="margin-bottom: 10px" required autofocus>
+                    <label for="Name">Your Name / Order Id</label>
+                    <input id="Name" placeholder="Your Order Id / Name" maxlength=50 class="form-control" type="text" cols="50" tabindex="1" style="margin-bottom: 10px" required autofocus>
                 </fieldset>
 
                 <fieldset>
-                    <label for="phonenumber">Your Mobile Number</label>
-                    <input id="phoneNO" placeholder="Your Mobile Number" maxlength=10 class="form-control" aria-describedby="phonenumberHelp" type="tel" rows="1" cols="50" tabindex="2" required>
-                    <small id="phonenumberHelp" class="form-text text-muted" >We'll never share your mobiles number with anyone else.</small>
+                    <label for="phonenumber">Your Mobile Number / Email Id </label>
+                    <input id="phoneNO" placeholder="Mobile Number / Email Id" maxlength=10 class="form-control" aria-describedby="phonenumberHelp" type="tel" rows="1" cols="50" tabindex="2" required>
+                    <small id="phonenumberHelp" class="form-text text-muted" >We'll never share your mobiles number/ email id with anyone else.</small>
                 </fieldset>
 
                 <fieldset>
-                    <label for="message">Details: </label>
+                    <label for="message">Message Details: </label>
                     <textarea id="message" placeholder="Type your message here...." maxlength=1000 class="form-control" rows="4" cols="50" tabindex="3" style="margin-bottom: 10px" required></textarea>
                 </fieldset>
 
                 <fieldset >
-                    <button name="button" type="button"  onclick="return submitFeedBack()" class="btn btn-primary py-3 px-5" id="contact-submit" data-submit="...Sending" style="margin-bottom: 22px" >Submit</button>
+                    <input type="button"  onclick="return submitFeedBack(this)" class="btn btn-primary py-3 px-5" id="contact-submit"  style="margin-bottom: 22px;font-size: 20px;" value="Submit Feedback" />
                 </fieldset>
 
             </form>
@@ -129,8 +118,8 @@
                         <div class="footer-text one">
                             <h3>CONTACT US</h3>
                             <ul>
-                                <li><a href="#"><i class="material-icons">location_on</i>Sector 23, Plot Number 142, Rasayani, Navi Mumbai</a></li>
-                                <li><a href="#"><i class="material-icons">email</i>info@rasayaniallinone.in</a></li>
+                                <li><a href="#"><i class="material-icons">location_on</i>Sector 23, Plot Number 142, ULWE, Navi Mumbai</a></li>
+                                <li><a href="#"><i class="material-icons">email</i>info@ulweallinone.in</a></li>
 								<li><a href="ContactForm.html"><i class="material-icons">chat</i>Feedback\Suggestions</a></li>
 				    		</ul>
                         </div>
@@ -142,10 +131,12 @@
             </div>
         </footer>
     
-    <script src="js/jquery-3.2.1.min.js"></script>
+      <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script id="myscriptLib" myCustomAttrib="common"  src="js/script-lib.js"></script>
-   
+	<script>
+		initFeedBackVendors();
+	</script>
 </body>
 
 </html>
