@@ -28,7 +28,6 @@ body {
 	-ms-border-radius: 8px;
 	-moz-border-radius: 8px;
 	-webkit-border-radius: 8px;
-	margin: 180px 0;
 	font-family: 'Nunito', sans-serif;
 	color: #fff;
 	font-weight: 700;
@@ -135,7 +134,7 @@ input:-moz-placeholder { /* Firefox 18- */
 /* Responsive */
 @media screen and (max-width: 991px) {
 	.form-v6-content {
-		margin: 180px 20px;
+		
 		flex-direction:  column;
 		-o-flex-direction:  column;
 		-ms-flex-direction:  column;
