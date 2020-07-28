@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /COVID19.html
+Disallow: /img
+Disallow: /.settings
+Disallow: /js
+Disallow: /css
+Disallow: /scss
+Disallow: /.gitignore
+Disallow: /CNAME
+Disallow: /style.css
+Disallow: /responsive.css
