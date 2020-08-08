@@ -35,7 +35,7 @@ var footerSection =  '<br><br><footer class="footer">'+
                 '</div>'+
             '</div>'+
             '<div class="footer_bottom">'+
-                '<p>Copyright@2020 <a href="javascript:void(0)">RasayaniAllinOne</a> All Rights Reserved</p>'+
+                '<p>Copyright@2020 <a href="javascript:void(0)" id="serviceArea">RasayaniAllinOne</a> All Rights Reserved</p>'+
             '</div>'+
         '</footer>';
 		
